@@ -1,14 +1,22 @@
 
-import './Styles/App.css'
-import {classes} from 'react'
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 function Navigation() {
 
   return (
     <>
       <div className="NavBar">
-        <button> Hello from Navigation
-        </button>
+        <h1>
+        Hello from Navigation
+        </h1>
+        
+        <Link to="/student/login"> 
+          Login as a Student
+        </Link>
+        <Link to="coworker/login"> 
+          Login as a CoWorker
+        </Link>
       </div>
     </>
   )

@@ -1,20 +1,26 @@
 import { useState } from 'react'
+import { Route, Routes } from "react-router-dom";
+import WelcomeSplitScreen from './Pages/WelcomeSplitScreen'
+import LoginPage from './Pages/LoginPage'
 
-import './Styles/App.css'
+
+import styles from './Styles/App.module.css'
+import Navigation from './Components/Navigation'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className={styles.App}>
+      <Routes>
+        <Route path='/' component={WelcomeSplitScreen} />
+        <Route path='/student/login' component={LoginPage} />
+      </Routes>
 
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+
+      <Navigation />
+
+    </div>
   )
 }
 
