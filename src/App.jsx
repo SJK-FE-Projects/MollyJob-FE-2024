@@ -9,7 +9,6 @@ import styles from './Styles/App.module.css'
 import Navigation from './Components/Navigation'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className={styles.App}>
@@ -18,6 +17,7 @@ function App() {
         <Route path='/student/login' element={LoginPage} />
         <Route path='/coworker/login' element={LoginPage} />
         <Route path='/coworker/coverletterform' element={CoverLetterPage} />
+        <Route path='/student/coverletterform' element={CoverLetterPage} />
       </Routes>
 
 
