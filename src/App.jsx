@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import WelcomeSplitScreen from './Pages/WelcomeSplitScreen'
 import LoginPage from './Pages/LoginPage'
+import CoverLetterPage from './Pages/CoverLetterPage'
 
 
 import styles from './Styles/App.module.css'
@@ -13,8 +14,10 @@ function App() {
   return (
     <div className={styles.App}>
       <Routes>
-        <Route path='/' component={WelcomeSplitScreen} />
-        <Route path='/student/login' component={LoginPage} />
+        <Route path='/' element={WelcomeSplitScreen} />
+        <Route path='/student/login' element={LoginPage} />
+        <Route path='/coworker/login' element={LoginPage} />
+        <Route path='/coworker/coverletterform' element={CoverLetterPage} />
       </Routes>
 
 

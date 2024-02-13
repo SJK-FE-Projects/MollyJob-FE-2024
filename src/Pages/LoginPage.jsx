@@ -1,10 +1,22 @@
-import LoginForm from "../Components/LoginForm"
+import { Container, Text, useMantineTheme } from "@mantine/core";
+import AuthForm from "../Components/LoginForm";
 
-function LoginPage() {
+const LoginPage = () => {
+  useMantineTheme();
+  // Mantine theme ->
+  const theme = useMantineTheme();
+  const cardStyles = {
+    backgroundColor: theme.colors.dark[0],
+    color: theme.colorScheme === "dark" ? theme.light : theme.dark,
+  };
+  //
 
-    return (
-<LoginForm/>
-    )
-  }
+  return (
+    <Container sx={{ paddingX: 24, paddingY: 4 }} size="sm" c={theme.colors.dark[4]}>
+    <Text  size="xl">Log in</Text>
+      <AuthForm isLogin />
+    </Container>
+  );
+};
 
-  export default LoginPage
+export default LoginPage;

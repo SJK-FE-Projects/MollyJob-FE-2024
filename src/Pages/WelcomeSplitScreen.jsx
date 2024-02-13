@@ -1,7 +1,12 @@
 import React from 'react';
 
 const WelcomeSplitScreen = () => {
-  return <div>Welcome to the Welcome from SplitScreen page</div>;
+  return <div>
+    <h1>
+
+    Welcome to the Welcome from SplitScreen page
+    </h1>
+    </div>;
 }
 
 export default WelcomeSplitScreen;
