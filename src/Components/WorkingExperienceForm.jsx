@@ -17,7 +17,7 @@ const AuthForm = ({ isLogin = true }) => {
   const handleCompany = (event) => setCompany(event.target.value);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const reqBody = {jobType,jobRole,company};
+    const reqBody = { jobType, jobRole, company };
 
     // try {
     //   const response = await fetch(
@@ -54,36 +54,40 @@ const AuthForm = ({ isLogin = true }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-       
-          <label>
-            Job Type
-            <input
-              type="text"
-              required
-              value={jobType}
-              onChange={handleJobType}
-            />
-          </label>
-          <label>
-            Job Role
-            <input
-              type="text"
-              required
-              value={jobRole}
-              onChange={handleJobRole}
-            />
-          </label>
-          <label>
-            Company
-            <input
-              type="text"
-              required
-              value={company}
-              onChange={handleCompany}
-            />
-          </label>
 
-        <button mt="xl" variant="filled" bg={theme.colors.dark[1]} size="xs" radius="xl" type="submit">{isLogin ? "Login" : "Signup"}</button>
+        <label>
+          Job Type
+          <select
+            type="dropdown"
+          >
+            <option value={jobType}>Internship</option>
+            <option value={jobType}>Full-time</option>
+            <option value={jobType}>Part-time</option>
+            <option value={jobType}>Contract</option>
+            <option value={jobType}>Freelance</option>
+            <option value={jobType}>Temporary</option>
+
+          </select>
+          onChange={handleJobType}
+        </label>
+        <label>
+          Job Role
+          <input
+            type="text"
+            value={jobRole}
+            onChange={handleJobRole}
+          />
+        </label>
+        <label>
+          Company
+          <input
+            type="text"
+            value={company}
+            onChange={handleCompany}
+          />
+        </label>
+
+        <button type="submit">Submit</button>
       </form>
     </>
   );
