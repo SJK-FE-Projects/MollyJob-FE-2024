@@ -59,16 +59,17 @@ const AuthForm = ({ isLogin = true }) => {
           Job Type
           <select
             type="dropdown"
+            value={jobType}
+            onChange={handleJobType}
           >
-            <option value={jobType}>Internship</option>
-            <option value={jobType}>Full-time</option>
-            <option value={jobType}>Part-time</option>
-            <option value={jobType}>Contract</option>
-            <option value={jobType}>Freelance</option>
-            <option value={jobType}>Temporary</option>
+            <option value="internship">Internship</option>
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="contract">Contract</option>
+            <option value="freelance">Freelance</option>
+            <option value="temporary">Temporary</option>
 
           </select>
-          onChange={handleJobType}
         </label>
         <label>
           Job Role
