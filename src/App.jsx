@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
-import WelcomeSplitScreen from './Pages/WelcomeSplitScreen'
+import WelcomeSplitScreen from './Pages/WelcomeSplitScreen';
 import LoginPage from './Pages/LoginPage'
 import CoverLetterPage from './Pages/CoverLetterPage'
 
 
-import styles from './Styles/App.module.css'
+import styles from './Styles/App.module.scss'
 import Navigation from './Components/Navigation'
 
 function App() {
@@ -13,16 +12,13 @@ function App() {
   return (
     <div className={styles.App}>
       <Routes>
-        <Route path='/' element={WelcomeSplitScreen} />
-        <Route path='/student/login' element={LoginPage} />
-        <Route path='/coworker/login' element={LoginPage} />
-        <Route path='/coworker/coverletterform' element={CoverLetterPage} />
-        <Route path='/student/coverletterform' element={CoverLetterPage} />
+        <Route path='/' element={<WelcomeSplitScreen/>} />
+        <Route path='student/login' element={<LoginPage/>} />
+        <Route path='coworker/login' element={<LoginPage/>} />
+        <Route path='coworker/coverletterform' element={<CoverLetterPage/>} />
+        <Route path='student/coverletterform' element={<CoverLetterPage/>} />
       </Routes>
-
-
-      <Navigation />
-
+      <Navigation/>
     </div>
   )
 }
