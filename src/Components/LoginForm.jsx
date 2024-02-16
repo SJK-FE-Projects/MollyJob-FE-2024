@@ -1,19 +1,16 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
-import { Button, Container, Input, useMantineTheme } from '@mantine/core';
-
+import { Button, Container, Input, useMantineTheme } from "@mantine/core";
 
 const AuthForm = ({ isLogin = false }) => {
-
   // =Mantine theme ->
   const theme = useMantineTheme();
   const cardStyles = {
     backgroundColor: theme.colors.dark[0],
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
   };
-
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,12 +25,15 @@ const AuthForm = ({ isLogin = false }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const reqBody = { username, email, password };
+    const { roleId } = useParams();
 
     try {
       const response = await fetch(
         // Do we need to add any url in the .env file ??????
 
-        `${import.meta.env.VITE_API_URL}/auth/${isLogin ? "login" : "signup"}`,
+        `${import.meta.env.VITE_API_URL}/auth/${
+          isLogin ? "login" : "signup"
+        }/${roleId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,7 +51,7 @@ const AuthForm = ({ isLogin = false }) => {
         // The user was logged in successully
         const parsed = await response.json();
         console.log(parsed);
-        alert("User logged in successfully")
+        alert("User logged in successfully");
         navigate("/");
 
         saveToken(parsed.token);
@@ -69,7 +69,8 @@ const AuthForm = ({ isLogin = false }) => {
             Username
             <Input
               tt="uppercase"
-              size="xs" radius="xl"
+              size="xs"
+              radius="xl"
               type="text"
               required
               value={username}
@@ -81,23 +82,36 @@ const AuthForm = ({ isLogin = false }) => {
           Email
           <Input
             tt="uppercase"
-            size="xs" radius="xl"
+            size="xs"
+            radius="xl"
             type="email"
-            required value={email}
-            onChange={handleEmail} />
+            required
+            value={email}
+            onChange={handleEmail}
+          />
         </label>
         <label>
           Password
           <Input
             tt="uppercase"
-            size="xs" radius="xl"
+            size="xs"
+            radius="xl"
             type="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-        <Button mt="xl" variant="filled" bg={theme.colors.dark[1]} size="xs" radius="xl" type="submit">{isLogin ? "Login" : "Signup"}</Button>
+        <Button
+          mt="xl"
+          variant="filled"
+          bg={theme.colors.dark[1]}
+          size="xs"
+          radius="xl"
+          type="submit"
+        >
+          {isLogin ? "Login" : "Signup"}
+        </Button>
       </form>
     </Container>
   );

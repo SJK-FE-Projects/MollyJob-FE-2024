@@ -1,0 +1,33 @@
+:root {
+  --main-orange: #f65858;
+  --main-green: #00798a;
+  --light-green: #f2f9fa;
+  --main-background: #ffffff;
+  --dark-background: #212121;
+  --main-title-color: #282828;
+  --text-color: #a3a3a3;
+  --label-text-color: #606060;
+  --orange-light: #f4c0b0;
+  --background-light-grey: #f6f6f6;
+  --border-white-grey: #dbdbdb;
+}
+
+.pageContainer {
+  margin-inline: 100px;
+  min-height: 70vh;
+}
+
+* {
+  background-color: var(--main-background);
+  font-family: "Arial", "Roboto", sans-serif;
+  color: var(--label-text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}

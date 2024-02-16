@@ -1,15 +1,7 @@
-import { Container, Text, useMantineTheme } from "@mantine/core";
-import AuthForm from "../Components/LoginForm";
+import AuthForm from "../Components/AuthForm";
 
 const LoginPage = () => {
-
-
-  return (
-    <Container sx={{ paddingX: 24, paddingY: 4 }} size="sm">
-    <Text  size="xl">Log in</Text>
-      <AuthForm isLogin />
-    </Container>
-  );
+  return <AuthForm isLogin />;
 };
 
 export default LoginPage;

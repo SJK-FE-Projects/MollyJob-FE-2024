@@ -2,9 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
-
-
-const AuthForm = ({ isLogin = true }) => {
+const EduForm = ({ isLogin = true }) => {
   const [degree, setDegree] = useState("");
   const [major, setMajor] = useState("");
   const [uni, setUni] = useState("");
@@ -24,7 +22,7 @@ const AuthForm = ({ isLogin = true }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const reqBody = {degree, major, uni, country, courses, GPA};
+    const reqBody = { degree, major, uni, country, courses, GPA };
 
     // try {
     //   const response = await fetch(
@@ -61,66 +59,44 @@ const AuthForm = ({ isLogin = true }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-       
-          <label>
-            Degree
-            <input
-              type="text"
-              required
-              value={degree}
-              onChange={handleDegree}
-            />
-          </label>
-          <label>
-            Major
-            <input
-              type="text"
-              required
-              value={major}
-              onChange={handleMajor}
-            />
-          </label>
-          <label>
-            University
-            <input
-              type="text"
-              required
-              value={uni}
-              onChange={handleUni}
-            />
-          </label>
-          <label>
-            Country
-            <input
-              type="text"
-              value={country}
-              onChange={handleCountry}
-            />
-          </label>
-          <label>
-            Courses
-            <input
-              type="text"
-              
-              value={courses}
-              onChange={handleCourses}
-            />
-          </label>
-          <label>
-            GPA
-            <input
-              type="text"
-              
-              value={GPA}
-              onChange={handleGPA}
-            />
-          </label>
-       
+        <label>
+          Degree
+          <input type="text" required value={degree} onChange={handleDegree} />
+        </label>
+        <label>
+          Major
+          <input type="text" required value={major} onChange={handleMajor} />
+        </label>
+        <label>
+          University
+          <input type="text" required value={uni} onChange={handleUni} />
+        </label>
+        <label>
+          Country
+          <input type="text" value={country} onChange={handleCountry} />
+        </label>
+        <label>
+          Courses
+          <input type="text" value={courses} onChange={handleCourses} />
+        </label>
+        <label>
+          GPA
+          <input type="text" value={GPA} onChange={handleGPA} />
+        </label>
 
-        <button mt="xl" variant="filled" bg={theme.colors.dark[1]} size="xs" radius="xl" type="submit">{isLogin ? "Login" : "Signup"}</button>
+        <button
+          mt="xl"
+          variant="filled"
+          bg={theme.colors.dark[1]}
+          size="xs"
+          radius="xl"
+          type="submit"
+        >
+          {isLogin ? "Login" : "Signup"}
+        </button>
       </form>
     </>
   );
 };
 
-export default AuthForm;
+export default EduForm;

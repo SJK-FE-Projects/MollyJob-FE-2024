@@ -1,0 +1,68 @@
+@import "../App.css";
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signupForm {
+  padding: 40px 20px;
+  border: 2px solid var(--main-green);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signupForm label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--label-text-color);
+}
+.signupForm label span {
+  width: 170px;
+}
+.signupInput {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid var(--orange-light);
+  border-radius: 4px;
+}
+
+.signupButton {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: transparent;
+  color: var(--main-orange);
+  border: 2px solid var(--main-orange);
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.signupButton:hover {
+  background-color: var(--main-orange);
+  color: var(--main-background);
+}
+
+.navigateLinks {
+  color: var(--label-text-color);
+}
+.navigateLinks span {
+  color: var(--main-green);
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .signupForm {
+    padding-top: 2em;
+  }
+}
