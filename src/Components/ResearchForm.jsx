@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 
 
 
-const AuthForm = ({ isLogin = true }) => {
+const ResearchForm = ({ isLogin = true }) => {
   const [projects, setProjects] = useState("");
   const [conference, setConference] = useState("");
   const [awards, setAwards] = useState("");
@@ -124,4 +124,4 @@ const AuthForm = ({ isLogin = true }) => {
   );
 };
 
-export default AuthForm;
+export default ResearchForm;

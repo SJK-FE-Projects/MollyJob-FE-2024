@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import WelcomeSplitScreen from './Pages/WelcomeSplitScreen';
 import LoginPage from './Pages/LoginPage'
-import CoverLetterFormWorker from './Pages/CoverLetterFormCoWorker'
 import CoverLetterFormStudent from './Pages/CoverLetterFormStudent'
 
 
 import styles from './Styles/App.module.scss'
 import Navigation from './Components/Navigation'
+import CLFormWork from "./Pages/CoverLetterFormCoWorker";
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
         <Route path='/' element={<WelcomeSplitScreen/>} />
         <Route path='student/login' element={<LoginPage/>} />
         <Route path='coworker/login' element={<LoginPage/>} />
-        <Route path='coworker/coverletterform' element={<CoverLetterFormWorker/>} />
+        <Route path='coworker/coverletterform' element={<CLFormWork/>} />
         <Route path='student/coverletterform' element={<CoverLetterFormStudent/>} />
       </Routes>
       <Navigation/>

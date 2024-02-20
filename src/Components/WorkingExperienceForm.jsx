@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 
 
 
-const AuthForm = ({ isLogin = true }) => {
+const WorkExpForm = ({ isLogin = true }) => {
   const [jobType, setJobType] = useState("");
   const [jobRole, setJobRole] = useState("");
   const [company, setCompany] = useState("");
@@ -94,4 +94,4 @@ const AuthForm = ({ isLogin = true }) => {
   );
 };
 
-export default AuthForm;
+export default WorkExpForm;
