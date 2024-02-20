@@ -49,7 +49,7 @@ const AuthForm = ({ isLogin = false }) => {
   return (
     <div className={styles.formContainer}>
       <form className={styles.signupForm} onSubmit={handleSubmit}>
-        {isLogin && (
+        {!isLogin && (
           <label>
             <span>firstname</span>
             <input
@@ -62,7 +62,7 @@ const AuthForm = ({ isLogin = false }) => {
           </label>
         )}
 
-        {isLogin && (
+        {!isLogin && (
           <label>
             <span>lastName</span>
             <input
