@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CoverLetterPage = () => {
   return <div>
     <h1>
-      Welcome to the Welcome from Cover etter page
+      Welcome to the Cover Letter page
     </h1>
 
   </div>;
