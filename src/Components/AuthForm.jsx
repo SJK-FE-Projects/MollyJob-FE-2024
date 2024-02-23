@@ -6,13 +6,8 @@ import styles from "../Styles/signUp.module.css";
 const AuthForm = ({ isLogin = false }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [dob, setDob] = useState("");
-  const [address, setAddress] = useState("");
-  const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [profilePic, setProfilePic] = useState("");
   const [role, setRole] = useState("");
   const myLocation = useLocation();
 
@@ -25,13 +20,8 @@ const AuthForm = ({ isLogin = false }) => {
     const reqBody = {
       firstName,
       lastName,
-      nationality,
       email,
       password,
-      dob,
-      address,
-      tel,
-      profilePic,
       role,
     };
     console.log(reqBody);
@@ -90,7 +80,7 @@ const AuthForm = ({ isLogin = false }) => {
           </label>
         )}
 
-        {!isLogin && (
+        {/* {!isLogin && (
           <label>
             <span>Nationality</span>
             <select
@@ -140,7 +130,7 @@ const AuthForm = ({ isLogin = false }) => {
               className={styles.signupInput}
             />
           </label>
-        )}
+        )} */}
 
         <label>
           <span>Email</span>
@@ -164,7 +154,7 @@ const AuthForm = ({ isLogin = false }) => {
           />
         </label>
 
-        {!isLogin && (
+        {/* {!isLogin && (
           <label>
             <span>Profile Picture</span>
             <input
@@ -175,7 +165,8 @@ const AuthForm = ({ isLogin = false }) => {
               defaultValue="https://static.thenounproject.com/png/363633-200.png"
             />
           </label>
-        )}
+        )} */}
+
         {!isLogin && (
           <label>
             <span>Account Type</span>
