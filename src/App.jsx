@@ -7,6 +7,7 @@ import styles from "./Styles/App.module.scss";
 import Navigation from "./Components/Navigation";
 import SignUpPage from "./Pages/SingUpPage";
 import LoginPage from "./Pages/LoginPage";
+import EditPageForm from "./Pages/EditPageForm";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<WelcomeSplitScreen />} />
         <Route path="signup/" element={<SignUpPage />} />
         <Route path="login/" element={<LoginPage />} />
+        <Route path="profile/" element={<EditPageForm />} />
 
         <Route
           path="coworker/coverletterform"
@@ -25,7 +27,7 @@ function App() {
           element={<CoverLetterFormStudent />}
         />
       </Routes>
-      <Navigation />
+      {/* This line is commented for testing purpose <Navigation />*/}
     </div>
   );
 }
