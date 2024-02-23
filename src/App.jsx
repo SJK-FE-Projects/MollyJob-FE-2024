@@ -2,9 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import WelcomeSplitScreen from "./Pages/WelcomeSplitScreen";
 import CoverLetterFormWorker from "./Pages/CoverLetterFormCoWorker";
 import CoverLetterFormStudent from "./Pages/CoverLetterFormStudent";
-
 import styles from "./Styles/App.module.scss";
-import Navigation from "./Components/Navigation";
+//import Navigation from "./Components/Navigation";
 import SignUpPage from "./Pages/SingUpPage";
 import LoginPage from "./Pages/LoginPage";
 import EditPageForm from "./Pages/EditPageForm";
