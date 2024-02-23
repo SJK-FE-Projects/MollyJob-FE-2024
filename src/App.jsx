@@ -1,19 +1,22 @@
 import { Route, Routes } from "react-router-dom";
 import WelcomeSplitScreen from "./Pages/WelcomeSplitScreen";
-import LoginPage from "./Pages/LoginPage";
 import CoverLetterFormWorker from "./Pages/CoverLetterFormCoWorker";
 import CoverLetterFormStudent from "./Pages/CoverLetterFormStudent";
-
 import styles from "./Styles/App.module.scss";
-import Navigation from "./Components/Navigation";
+//import Navigation from "./Components/Navigation";
+import SignUpPage from "./Pages/SingUpPage";
+import LoginPage from "./Pages/LoginPage";
+import EditPageForm from "./Pages/EditPageForm";
 
 function App() {
   return (
     <div className={styles.App}>
       <Routes>
         <Route path="/" element={<WelcomeSplitScreen />} />
-        <Route path="student/login" element={<LoginPage />} />
-        <Route path="coworker/login" element={<LoginPage />} />
+        <Route path="signup/" element={<SignUpPage />} />
+        <Route path="login/" element={<LoginPage />} />
+        <Route path="profile/" element={<EditPageForm />} />
+
         <Route
           path="coworker/coverletterform"
           element={<CoverLetterFormWorker />}
@@ -23,7 +26,7 @@ function App() {
           element={<CoverLetterFormStudent />}
         />
       </Routes>
-      <Navigation />
+      {/* This line is commented for testing purpose <Navigation />*/}
     </div>
   );
 }
