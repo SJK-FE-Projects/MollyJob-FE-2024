@@ -1,29 +1,35 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import styles from "../Styles/signUp.module.css";
 
 const AuthForm = ({ isLogin = false }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const myLocation = useLocation();
 
   const navigate = useNavigate();
-
+  const currentPath = myLocation.pathname;
   const { saveToken } = useContext(AuthContext);
-
-  const handleEmail = (event) => setEmail(event.target.value);
-  const handleFirstName = (event) => setFirstName(event.target.value);
-  const handleLastName = (event) => setLastName(event.target.value);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const reqBody = { email, password, firstName, lastName };
-    console.log(import.meta.env.VITE_API_URL);
+    const reqBody = {
+      firstName,
+      lastName,
+      email,
+      password,
+      role,
+    };
+    console.log(reqBody);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/${isLogin ? "login" : "signup"}`,
+        `${import.meta.env.VITE_API_URL}/auth/${
+          isLogin ? "login" : `signup/${role}`
+        }`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -31,49 +37,100 @@ const AuthForm = ({ isLogin = false }) => {
         }
       );
       if (response.status === 201) {
+        alert("Signed In");
         navigate("/login");
-        alert("You have successfully Signedup ;)");
-      } else if (response.status === 200) {
-        navigate("/");
+      }
+      if (response.status === 200) {
         const parsed = await response.json();
         console.log(parsed);
         saveToken(parsed.token);
-      } else {
-        alert("Wrong Email or Password ;(");
+        alert("Logged In");
       }
     } catch (error) {
-      console.log(error);
+      console.log("error in authform");
     }
   };
 
   return (
     <div className={styles.formContainer}>
+      {currentPath}
       <form className={styles.signupForm} onSubmit={handleSubmit}>
         {!isLogin && (
           <label>
-            <span>firstname</span>
+            <span>Firstname</span>
             <input
               className={styles.signupInput}
               type="text"
               required
               value={firstName}
-              onChange={handleFirstName}
+              onChange={(event) => setFirstName(event.target.value)}
             />
           </label>
         )}
-
         {!isLogin && (
           <label>
-            <span>lastName</span>
+            <span>LastName</span>
             <input
               className={styles.signupInput}
               type="text"
               required
               value={lastName}
-              onChange={handleLastName}
+              onChange={(event) => setLastName(event.target.value)}
             />
           </label>
         )}
+
+        {/* {!isLogin && (
+          <label>
+            <span>Nationality</span>
+            <select
+              value={nationality}
+              onChange={(event) => setNationality(event.target.value)}
+              required
+              className={styles.signupInput}
+            >
+              <option value="">-- Please select --</option>
+              <option value="DE">German</option>
+              <option value="EN">American</option>
+              <option value="CN">Chinese</option>
+            </select>
+          </label>
+        )}
+        {!isLogin && (
+          <label>
+            <span>Date of Birth</span>
+            <input
+              type="date"
+              value={dob}
+              onChange={(event) => setDob(event.target.value)}
+              required
+              className={styles.signupInput}
+            />
+          </label>
+        )}
+        {!isLogin && (
+          <label>
+            <span>Address</span>
+            <textarea
+              rows={3}
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
+              required
+              className={styles.signupInput}
+            />
+          </label>
+        )}
+        {!isLogin && (
+          <label>
+            <span>Telephone No.</span>
+            <input
+              type="number"
+              value={tel}
+              onChange={(event) => setTel(event.target.value)}
+              className={styles.signupInput}
+            />
+          </label>
+        )} */}
 
         <label>
           <span>Email</span>
@@ -82,7 +139,7 @@ const AuthForm = ({ isLogin = false }) => {
             type="email"
             required
             value={email}
-            onChange={handleEmail}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </label>
 
@@ -96,24 +153,36 @@ const AuthForm = ({ isLogin = false }) => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-        <button className={styles.signupButton} type="submit">
-          {isLogin ? "Login" : "SignUp"}
-        </button>
-        {isLogin ? (
-          <div className={styles.navigateLinks}>
-            Not a member, yet?{" "}
-            <Link to="/signup">
-              <span>SignUp</span>
-            </Link>
-          </div>
-        ) : (
-          <div className={styles.navigateLinks}>
-            <span>Already a member?</span>{" "}
-            <Link to="/login">
-              <span>Login</span>
-            </Link>
-          </div>
+
+        {/* {!isLogin && (
+          <label>
+            <span>Profile Picture</span>
+            <input
+              type="text"
+              className={styles.signupInput}
+              value={profilePic}
+              onChange={(event) => setProfilePic(event.target.value)}
+              defaultValue="https://static.thenounproject.com/png/363633-200.png"
+            />
+          </label>
+        )} */}
+
+        {!isLogin && (
+          <label>
+            <span>Account Type</span>
+            <select
+              value={role}
+              onChange={(event) => setRole(event.target.value)}
+              className={styles.signupInput}
+            >
+              <option value="">-- Please select --</option>
+              <option value="65cb6d074640963d6e9003be">Student</option>
+              <option value="65cb6df259b9fab588737144">Job Seeker</option>
+            </select>
+          </label>
         )}
+
+        <button type="submit">{isLogin ? "Login" : "Signup"}</button>
       </form>
     </div>
   );
